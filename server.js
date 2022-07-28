@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
     if(url === '/') {
         res.setHeader('Content-Type', 'text/html');
         res.write('<h1>Greetings from my first NodeJS app!</h1>')
-        res.write('<form action="/create-user" method="POST"><input type="text" name="create-user"/><button type="submit">Submit</button></form>')
+        res.write('<form action="/create-user" method="POST"><input type="text" name="create-user" placeholder="Enter Username"/><button type="submit">Submit</button></form>')
         return res.end();
     }
     if(url === '/create-user' && method === 'POST') {
