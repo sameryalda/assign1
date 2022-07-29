@@ -14,13 +14,13 @@ const server = http.createServer((req, res) => {
         req.on('data', (chunk) => {
             body.push(chunk);
         })
-        return req.on('end', () => {
+        req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
-            console.log(parsedBody.split('=')[1]);
-            res.statusCode = 302;
-            res.setHeader('Location', '/users');
-            return res.end();
+            console.log(parsedBody);
         })
+        res.statusCode = 302;
+        res.setHeader('Location', '/users');
+        return res.end();
     }
     if(url === '/users') {
         res.setHeader('Content-Type', 'text/html');
