@@ -13,21 +13,20 @@ const server = http.createServer((req, res) => {
         const body = [];
         req.on('data', (chunk) => {
             body.push(chunk);
-        })
-        req.on('end', () => {
+        });
+        return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             console.log(parsedBody);
-        })
-        res.statusCode = 302;
-        res.setHeader('Location', '/users');
-        return res.end();
+            res.statusCode = 302;
+            res.setHeader('Location', '/users');
+            return res.end();
+        });
     }
     if(url === '/users') {
         res.setHeader('Content-Type', 'text/html');
         res.write('<ul><li>User 1</li> <li>User 2</li> <li>User 3</li> </ul>')
         return res.end();
     }
-
 });
 
 server.listen(3000);
