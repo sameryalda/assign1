@@ -31,3 +31,4 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3000);
+console.log("Server now listening on localhost:3000");
